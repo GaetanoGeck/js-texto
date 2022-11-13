@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link href="css/specification.css" rel="stylesheet">
+
+		<title>TEXTO - Tool for text-based data</title>
+	</head>
+	<body>
+		<!-- NAVIGATION BAR -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">TEXTO</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+		</nav>
+
+		<div class="container m-2">
+			<div class="row my-1">
+				<div class="col">
+					<label for="segmentDescriptions" class="form-label">
+						Segment descriptions
+						<button class="btn btn-sm btn-info mx-2 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#help" aria-expanded="false" aria-controls="help">
+							?
+						</button>
+					</label>
+					<textarea class="form-control specification" id="segmentDescriptions" rows="7"></textarea>
+				</div>
+				<div class="col">
+					<label for="segmentValues" class="form-label">
+						Segment values
+					</label>
+					<textarea class="form-control specification" id="segmentValues" rows="7"></textarea>
+				</div>
+			</div>
+
+			<div class="row my-1">
+				<div class="collapse" id="help">
+					<div class="card card-body border border-info">
+						Segment descriptions consist of three components, separated by colons: name, type, further details. Each is optional.
+						
+						<p>
+							<b>Examples:</b>
+							<ul>
+								<li><code>vepNr:String:fill='0'</code></li>
+								<li><code>vepNr::fill='0'</code>, where the type is guessed from the value</li>
+								<li><code>vepNr:Date</code></li>
+							</ul>
+						</p>
+
+						<p>
+							The name controls the result of the segment:
+							<ul>
+								<li>If no name is given, the segment will be ignored</li>
+								<li>If the name <code>#filler</code> is given, the name <code>filler1</code> will be used the first the, the name <code>filler2</code> the next time and so on.</li>
+							</ul>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row my-1">
+				<div class="col-auto my-1">
+					<button type="submit" class="btn btn-primary mb-3" onclick="generateCode()">
+						Generate code
+					</button>
+				</div>
+				<div class="col-auto my-1">
+					<div class="mb-3">
+						<input type="text" class="form-control" id="entityName" placeholder="EntityName">
+					</div>
+				</div>
+			</div>
+
+			<div class="row my-1">
+				<div class="col my-1">
+					<label for="generatedCode" class="form-label">
+						Code
+					</label>
+					<textarea class="form-control specification" id="generatedCode" rows="20"></textarea>
+				</div>
+			</div>
+		</div>
+
+		<script src="script/texto.js"></script>
+		<script src="script/texto-example.js"></script>
+		<script src="script/general/Field.js"></script>
+		<script src="script/general/FieldSpecification.js"></script>
+		<script src="script/general/FieldGenerator.js"></script>
+		<script src="script/jsb/code-generator.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	</body>
+</html>

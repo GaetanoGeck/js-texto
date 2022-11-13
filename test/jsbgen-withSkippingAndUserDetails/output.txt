@@ -1,0 +1,8 @@
+@JsbEntity
+public class EntityName {
+	@JsbField(order=0, length=4, skipBefore=8, fill='0')
+	private String one;
+
+	@JsbField(order=1, length=5, skipBefore=3)
+	private String two;
+}
