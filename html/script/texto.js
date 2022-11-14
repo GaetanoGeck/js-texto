@@ -64,6 +64,24 @@ function setGeneratedCode(generatedCode) {
 	setTextareaValue("generatedCode", generatedCode);
 }
 
+function splitByDelimiter() {
+	const delimiter = getInputText("delimiter");
+	const valueText = getTextareaValue("segmentValues");
+	const valueLines = valueText.split("\n");
+	const joinedValues = valueLines.join(delimiter);
+	const splitValues = joinedValues.split(delimiter);
+	const valuesNew = splitValues.join("\n");
+	setTextareaValue("segmentValues", valuesNew);
+}
+
+function joinWithDelimiter() {
+	const delimiter = getInputText("delimiter");
+	const valueText = getTextareaValue("segmentValues");
+	const valueLines = valueText.split("\n");
+	const joinedValues = valueLines.join(delimiter);
+	setTextareaValue("segmentValues", joinedValues);
+}
+
 function getTextareaValue(id) {
 	const elem = document.getElementById(id);
 	return elem.value;
