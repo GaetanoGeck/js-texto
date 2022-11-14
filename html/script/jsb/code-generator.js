@@ -1,23 +1,4 @@
-function generateJsbEntity(entityName, segmentDescriptions, segmentValues) {
-	const jsbFields = generateFields(segmentDescriptions, segmentValues);
-	return createEntity(entityName, jsbFields);
-
-	function generateFields(segmentDescriptions, segmentValues) {
-		const fields = [];
-		const generator = new FieldGenerator();
-		for (var i=0; i<segmentValues.length; i++) {
-			const description = segmentDescriptions[i];
-			const value = segmentValues[i];
-			const field = generator.generateField(description, value);
-			if (field) {
-				fields.push(field);
-			}
-		}
-		return fields;
-	}
-}
-
-function createEntity(entityName, fields) {
+function generateJsbEntity(entityName, fields) {
 	return openEntity(entityName) //
 		+ addAllFields(fields) //
 		+ closeEntity();
